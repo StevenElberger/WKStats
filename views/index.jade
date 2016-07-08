@@ -1,5 +1,13 @@
 extends layout
 
+block append head
+  script(src='/javascripts/jquery.min.js')
+  script(src='/javascripts/wkw.js')
+  script(src='/javascripts/home.js')
+
 block content
   h1= title
-  p Welcome to #{title}
+  p Enter your 32-character WaniKani API key:
+  input(type='text', maxlength=32)#key
+  input(type='button', value='Submit')#submit
+  p#userInformation
