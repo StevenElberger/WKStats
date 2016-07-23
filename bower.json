@@ -1,0 +1,14 @@
+{
+  "name": "wkstats",
+  "description": "A website to provide stats for your Wani Kani account",
+  "version": "0.0.0",
+  "homepage": "https://github.com/StevenElberger/WKStats",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0"
+  }
+}
