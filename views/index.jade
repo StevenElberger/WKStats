@@ -1,13 +1,24 @@
-extends layout
+html
+    head
+    block head
+        title= title
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/bootstrap.min.js')
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='/javascripts/wkw.js')
+        script(src='/javascripts/home.js')
 
-block append head
-  script(src='/javascripts/jquery.min.js')
-  script(src='/javascripts/wkw.js')
-  script(src='/javascripts/home.js')
-
-block content
-  h1= title
-  p Enter your 32-character WaniKani API key:
-  input(type='text', maxlength=32)#key
-  input(type='button', value='Submit')#submit
-  p#userInformation
+body
+    // ofsets are used for centering (offset is half remaining size of row)
+    // e.g. col-md-2 is (12 - 2) / 2 -> 5
+    div.container
+        div.row
+            div.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+                h2.title= title
+                p Enter your 32-character WaniKani API key:
+                div.key-container.input-group
+                    input(type='text', maxlength=32)#key.form-control
+                    span.input-group-btn
+                        input(type='button', value='Submit')#submit.btn.btn-default
+                div#userInformation.well.hidden

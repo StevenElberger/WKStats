@@ -1,12 +1,19 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #d3d3d3;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #333333;
 }
 
-a {
-  color: #00B7FF;
+.container {
+    margin: auto;
+    padding: 50px;
+    background-color: #d3d3d3;
 }
 
-.index input[type=text] {
+.key-container {
+    
+}
 
+input[type=text] {
+    color: #d14;
 }
