@@ -1,3 +1,5 @@
 'use strict';
 
-angular.module('wkStats', []);
+angular.module('wkStats', [
+	'apiKey'
+]);
