@@ -11,7 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -20,14 +23,18 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div>WaniKani Stats</div>
+    <h1>WaniKani Stats</h1>
 
-    <api-key></api-key>
+    <div ng-view></div>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="wkw.js"></script>
     <script src="app.js"></script>
+    <script src="app.config.js"></script>
     <script src="api-key/api-key.module.js"></script>
     <script src="api-key/api-key.component.js"></script>
+    <script src="user-information/user-information.module.js"></script>
+    <script src="user-information/user-information.component.js"></script>
 </body>
 </html>

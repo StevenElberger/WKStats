@@ -1,3 +1,5 @@
 'use strict'
 
-angular.module('apiKey', []);
+angular.module('apiKey', [
+	'ngRoute'
+]);

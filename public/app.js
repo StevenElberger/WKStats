@@ -1,5 +1,7 @@
 'use strict';
 
 angular.module('wkStats', [
-	'apiKey'
+	'apiKey',
+	'userInformation',
+	'ngRoute'
 ]);

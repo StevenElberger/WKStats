@@ -23,6 +23,18 @@
     "serve-favicon": "~2.3.0"
   },
   "scripts": {
-    "start": "node ./bin/www"
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "node ./bin/www",
+
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
   }
 }
