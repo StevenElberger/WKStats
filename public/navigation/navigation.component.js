@@ -8,6 +8,8 @@ angular.
 			function NavigationController($q, $routeParams) {
 				var self = this,
 					user = WKW.getUser($routeParams.userKey);
+
+				self.userKey = $routeParams.userKey,
 				// have to wrap the prommise in $q because of
 				// Angular's digest cycle
 				$q.when(user.getUserInformation()).then(function(error) {

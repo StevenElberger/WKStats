@@ -7,12 +7,12 @@ angular.
 			$locationProvider.hashPrefix('!');
 
 			$routeProvider.
-				when('/api-key', {
-					template: '<api-key></api-key>'
-				}).
 				when('/:userKey/navigation', {
-					template: '<navigation></navigation>'
+					template: '<div class="alert alert-info">Site under development! Pick something up top...</div>'
 				}).
-				otherwise('/api-key');
+				when('/:userKey/levels', {
+					template: '<levels></levels>'
+				}).
+				otherwise('/home');
 		}
 	]);
