@@ -10,8 +10,8 @@ angular.
 				when('/api-key', {
 					template: '<api-key></api-key>'
 				}).
-				when('/:userKey/information', {
-					template: '<user-information></user-information>'
+				when('/:userKey/navigation', {
+					template: '<navigation></navigation>'
 				}).
 				otherwise('/api-key');
 		}

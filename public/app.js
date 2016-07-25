@@ -2,6 +2,6 @@
 
 angular.module('wkStats', [
 	'apiKey',
-	'userInformation',
+	'navigation',
 	'ngRoute'
 ]);

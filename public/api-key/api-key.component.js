@@ -4,8 +4,8 @@ angular.
 	module('apiKey').
 	component('apiKey', {
 		templateUrl: 'api-key/api-key.template.html',
-		controller: ['$scope', '$location',
-			function ApiKeyController($scope, $location) {
+		controller: ['$q', '$location',
+			function ApiKeyController($q, $location) {
 				var self = this;
 
 				self.userKey = ""; // default
@@ -13,12 +13,11 @@ angular.
 				self.getData = function getData() {
 					if (self.userKey) {
 						// this should save the user in local storage
-						WKW.getUser(self.userKey).
-							getUserInformation().then(function(error) {
-								// redirect to bring up user information
-								$location.path("/" + self.userKey + '/information');
-								$scope.$apply();
-							});
+						var user = WKW.getUser(self.userKey);
+						$q.when(user.getUserInformation()).then(function(error) {
+							// redirect
+							$location.path('/' + self.userKey + '/navigation');
+						});
 					}
 				};
 			}
