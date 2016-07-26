@@ -4,8 +4,8 @@ angular.
 	module('levels').
 	component('levels', {
 		templateUrl: 'levels/levels.template.html',
-		controller: ['$q', '$routeParams',
-			function LevelsController($q, $routeParams) {
+		controller: ['$scope', '$q', '$routeParams',
+			function LevelsController($scope, $q, $routeParams) {
 				var self = this,
 					user = WKW.getUser($routeParams.userKey),
 					level;
@@ -13,13 +13,19 @@ angular.
 				self.earliestRadicals = [];
 				// stores information about each level
 				self.levels = {};
+				self.selected;
+				self.highlighted = 1;
+
+				self.setSelected = function() {
+					self.selected = self.levels[self.highlighted.level];
+				};
 
 				$q.when(user.getUserInformation()).then(function(error) {
 					level = user.user_information.level;
 				}).then(user.getRadicalsList()).then(function(error) {
 					var i, j, radicals, earliest, currentDate;
 					
-					// grab radicals by level
+					// tally radicals per level
 					for (i = 1; i <= level; i += 1) {
 						radicals = user.radicals.getByLevel(i);
 						self.levels[i] = {
@@ -61,6 +67,7 @@ angular.
 						self.earliestRadicals.push(earliest);
 					}
 				}).then(user.getKanjiList()).then(function(error) {
+					// tally kanji per level
 					var i, j, kanji;
 					for (i = 1; i <= level; i += 1) {
 						kanji = user.kanji.getByLevel(i);
@@ -87,6 +94,7 @@ angular.
 						}
 					}
 				}).then(user.getVocabularyList()).then(function(error) {
+					// tally vocab per level
 					var i, j, vocab;
 					for (i = 1; i <= level; i += 1) {
 						vocab = user.vocabulary.getByLevel(i);
@@ -113,6 +121,7 @@ angular.
 						}
 					}
 				}).then(function() {
+					// tally totals and select default level
 					var i;
 					for (i = 1; i <= level; i += 1) {
 						self.levels[i]["total"] = self.levels[i]["apprentice"] +
@@ -121,6 +130,7 @@ angular.
 													self.levels[i]["enlighten"] +
 													self.levels[i]["burned"];
 					}
+					self.selected = self.levels["1"];
 				});
 			}
 		]

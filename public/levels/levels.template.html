@@ -1,32 +1,38 @@
 <div>
-	<div class="panel-group" ng-repeat="level in $ctrl.levels">
+	<div class="form-group">
+		<label for="level-select">Select a level</label>
+		<select class="form-control" id="level-select" 
+			ng-options="level.level for level in $ctrl.levels track by level.level" 
+			ng-model="$ctrl.highlighted" 
+			ng-change="$ctrl.setSelected()">
+		</select>
+	</div>
+	<div class="panel-group">
 		<div class="panel panel-default">
 	    	<div class="panel-heading">
 	    		<h4 class="panel-title">
-	        		<a data-toggle="collapse" href="" data-target="#collapse{{level.level}}">Level {{level.level}}</a>
+	        		Level {{$ctrl.selected.level}}
 	      		</h4>
 	    	</div>
-		    <div id="collapse{{level.level}}" class="panel-collapse collapse">
-		    	<div class="panel-body">
-		    		<div class="progress">
-						<div class="progress-bar progress-apprentice" style="width: {{(level.apprentice / level.total) * 100}}%">
-					    	<span class="sr-only">{{(level.apprentice / level.total) * 100}}</span>
-					  	</div>
-					  	<div class="progress-bar progress-guru" style="width: {{(level.guru / level.total) * 100}}%">
-					    	<span class="sr-only">{{(level.guru / level.total) * 100}}</span>
-					  	</div>
-					  	<div class="progress-bar progress-master" style="width: {{(level.master / level.total) * 100}}%">
-					    	<span class="sr-only">{{(level.master / level.total) * 100}}</span>
-					  	</div>
-					  	<div class="progress-bar progress-enlighten" style="width: {{(level.enlighten / level.total) * 100}}%">
-					    	<span class="sr-only">{{(level.enlighten / level.total) * 100}}</span>
-					  	</div>
-					  	<div class="progress-bar progress-burned" style="width: {{(level.burned / level.total) * 100}}%">
-					    	<span class="sr-only">{{(level.burned / level.total) * 100}}</span>
-					  	</div>
-					</div>
-		    	</div>
-		    </div>
+	    	<div class="panel-body">
+	    		<div class="progress">
+					<div class="progress-bar progress-apprentice" style="width: {{($ctrl.selected.apprentice / $ctrl.selected.total) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.selected.apprentice / $ctrl.selected.total) * 100}}</span>
+				  	</div>
+				  	<div class="progress-bar progress-guru" style="width: {{($ctrl.selected.guru / $ctrl.selected.total) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.selected.guru / $ctrl.selected.total) * 100}}</span>
+				  	</div>
+				  	<div class="progress-bar progress-master" style="width: {{($ctrl.selected.master / $ctrl.selected.total) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.selected.master / $ctrl.selected.total) * 100}}</span>
+				  	</div>
+				  	<div class="progress-bar progress-enlighten" style="width: {{($ctrl.selected.enlighten / $ctrl.selected.total) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.selected.enlighten / $ctrl.selected.total) * 100}}</span>
+				  	</div>
+				  	<div class="progress-bar progress-burned" style="width: {{($ctrl.selected.burned / $ctrl.selected.total) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.selected.burned / $ctrl.selected.total) * 100}}</span>
+				  	</div>
+				</div>
+	    	</div>
 		</div>
 	</div>
 </div>
