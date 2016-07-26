@@ -13,6 +13,6 @@ angular.
 				when('/:userKey/levels', {
 					template: '<levels></levels>'
 				}).
-				otherwise('/home');
+				otherwise('/');
 		}
 	]);

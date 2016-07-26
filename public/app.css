@@ -10,3 +10,23 @@ input[type="text"] {
 .content {
 	margin-top: 5%;
 }
+
+.progress-apprentice {
+	background-color: #f0a;
+}
+
+.progress-guru {
+	background-color: #aa38c6;
+}
+
+.progress-master {
+	background-color: #5571e2;
+}
+
+.progress-enlighten {
+	background-color: #0af;
+}
+
+.progress-burned {
+	background-color: #555;
+}

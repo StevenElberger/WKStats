@@ -1,0 +1,32 @@
+<div>
+	<div class="panel-group" ng-repeat="level in $ctrl.levels">
+		<div class="panel panel-default">
+	    	<div class="panel-heading">
+	    		<h4 class="panel-title">
+	        		<a data-toggle="collapse" href="" data-target="#collapse{{level.level}}">Level {{level.level}}</a>
+	      		</h4>
+	    	</div>
+		    <div id="collapse{{level.level}}" class="panel-collapse collapse">
+		    	<div class="panel-body">
+		    		<div class="progress">
+						<div class="progress-bar progress-apprentice" style="width: {{(level.apprentice / level.total) * 100}}%">
+					    	<span class="sr-only">{{(level.apprentice / level.total) * 100}}</span>
+					  	</div>
+					  	<div class="progress-bar progress-guru" style="width: {{(level.guru / level.total) * 100}}%">
+					    	<span class="sr-only">{{(level.guru / level.total) * 100}}</span>
+					  	</div>
+					  	<div class="progress-bar progress-master" style="width: {{(level.master / level.total) * 100}}%">
+					    	<span class="sr-only">{{(level.master / level.total) * 100}}</span>
+					  	</div>
+					  	<div class="progress-bar progress-enlighten" style="width: {{(level.enlighten / level.total) * 100}}%">
+					    	<span class="sr-only">{{(level.enlighten / level.total) * 100}}</span>
+					  	</div>
+					  	<div class="progress-bar progress-burned" style="width: {{(level.burned / level.total) * 100}}%">
+					    	<span class="sr-only">{{(level.burned / level.total) * 100}}</span>
+					  	</div>
+					</div>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+</div>
