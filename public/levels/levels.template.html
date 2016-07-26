@@ -2,9 +2,8 @@
 	<div class="form-group">
 		<label for="level-select">Select a level</label>
 		<select class="form-control" id="level-select" 
-			ng-options="level.level for level in $ctrl.levels track by level.level" 
-			ng-model="$ctrl.highlighted" 
-			ng-change="$ctrl.setSelected()">
+			ng-options="item as item.level for item in $ctrl.levels track by item.level" 
+			ng-model="$ctrl.selected">
 		</select>
 	</div>
 	<div class="panel-group">

@@ -13,12 +13,6 @@ angular.
 				self.earliestRadicals = [];
 				// stores information about each level
 				self.levels = {};
-				self.selected;
-				self.highlighted = 1;
-
-				self.setSelected = function() {
-					self.selected = self.levels[self.highlighted.level];
-				};
 
 				$q.when(user.getUserInformation()).then(function(error) {
 					level = user.user_information.level;
