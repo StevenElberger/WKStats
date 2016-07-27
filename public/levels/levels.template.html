@@ -31,6 +31,31 @@
 				    	<span class="sr-only">{{($ctrl.selected.burned / $ctrl.selected.total) * 100}}</span>
 				  	</div>
 				</div>
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<div class="btn-group" role="group">
+				    	<button type="button" class="btn btn-default btn-radicals" ng-click="$ctrl.showRadicals()">
+				    		<strong>Radicals</strong>
+				    		<span class="badge level-badge">{{$ctrl.selected.radicals}}</span>
+				    	</button>
+					</div>
+					<div class="btn-group" role="group">
+				    	<button type="button" class="btn btn-default btn-kanji" ng-click="$ctrl.showKanji()">
+				    		<strong>Kanji</strong>
+				    		<span class="badge level-badge">{{$ctrl.selected.kanji}}</span>
+				    	</button>
+					</div>
+					<div class="btn-group" role="group">
+				    	<button type="button" class="btn btn-default btn-vocabulary" ng-click="$ctrl.showVocab()">
+				    		<strong>Vocabulary</strong>
+				    		<span class="badge level-badge">{{$ctrl.selected.vocabulary}}</span>
+				    	</button>
+					</div>
+				</div>
+				<div class="well">
+					<button type="button" class="btn btn-default btn-circle btn-size14 progress-{{item.user_specific.srs}}" ng-repeat="item in $ctrl.itemsToShow">
+						{{item.character}}
+					</button>
+				</div>
 	    	</div>
 		</div>
 	</div>

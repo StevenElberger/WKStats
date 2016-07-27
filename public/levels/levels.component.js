@@ -13,6 +13,24 @@ angular.
 				self.earliestRadicals = [];
 				// stores information about each level
 				self.levels = {};
+				// stores items on a level-by-level basis
+				self.items = {};
+				// which items are being shown
+				self.shown = "";
+				//
+				self.itemsToShow = [];
+
+				self.showRadicals = function showRadicals() {
+					self.itemsToShow = self.items[self.selected.level]["radicals"];
+				};
+
+				self.showKanji = function showKanji() {
+					self.itemsToShow = self.items[self.selected.level]["kanji"];
+				};
+
+				self.showVocab = function showVocab() {
+					self.itemsToShow = self.items[self.selected.level]["vocabulary"];
+				};
 
 				$q.when(user.getUserInformation()).then(function(error) {
 					level = user.user_information.level;
@@ -28,7 +46,15 @@ angular.
 							"guru": 0,
 							"master": 0,
 							"enlighten": 0,
-							"burned": 0
+							"burned": 0,
+							"radicals": 0,
+							"kanji": 0,
+							"vocabulary": 0
+						};
+						self.items[i] = {
+							"radicals": radicals,
+							"kanji": [],
+							"vocabulary": []
 						};
 						earliest = Infinity;
 						// identify earliest radical at that level
@@ -57,6 +83,7 @@ angular.
 							default:
 								break;
 							}
+							self.levels[i]["radicals"] += 1;
 						}
 						self.earliestRadicals.push(earliest);
 					}
@@ -65,6 +92,7 @@ angular.
 					var i, j, kanji;
 					for (i = 1; i <= level; i += 1) {
 						kanji = user.kanji.getByLevel(i);
+						self.items[i]["kanji"] = kanji;
 						for (j = 0; j < kanji.length; j += 1) {
 							switch(kanji[j].user_specific.srs) {
 							case "apprentice":
@@ -85,6 +113,7 @@ angular.
 							default:
 								break;
 							}
+							self.levels[i]["kanji"] += 1;
 						}
 					}
 				}).then(user.getVocabularyList()).then(function(error) {
@@ -92,6 +121,7 @@ angular.
 					var i, j, vocab;
 					for (i = 1; i <= level; i += 1) {
 						vocab = user.vocabulary.getByLevel(i);
+						self.items[i]["vocabulary"] = vocab;
 						for (j = 0; j < vocab.length; j += 1) {
 							switch(vocab[j].user_specific.srs) {
 							case "apprentice":
@@ -112,6 +142,7 @@ angular.
 							default:
 								break;
 							}
+							self.levels[i]["vocabulary"] += 1;
 						}
 					}
 				}).then(function() {

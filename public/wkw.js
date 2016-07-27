@@ -396,6 +396,8 @@ var WKW = (function(global) {
                 } else {
                     if (spec.obj.userResourceLoc === "user_information") {
                         deepCopy(data.user_information, spec.user.user_information);
+                    } else if (spec.obj.userResourceLoc === "vocabulary") {
+                        deepCopy(data.requested_information.general, spec.user[spec.obj.userResourceLoc]);
                     } else {
                         deepCopy(data.requested_information, spec.user[spec.obj.userResourceLoc]);
                     }
