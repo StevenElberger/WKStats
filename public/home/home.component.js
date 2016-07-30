@@ -4,8 +4,8 @@ angular.
 	module('home').
 	component('home', {
 		templateUrl: 'home/home.template.html',
-		controller: ['$q', '$location',
-			function HomeController($q, $location) {
+		controller: ['$q', '$rootScope', '$location',
+			function HomeController($q, $rootScope, $location) {
 				var self = this;
 
 				// defaults
@@ -18,7 +18,7 @@ angular.
 						var user = WKW.getUser(self.userKey);
 						// have to wrap the promise in $q because of
 						// Angular's digest cycle
-						$q.when(user.getUserInformation()).then(function(error) {
+						$q.when(user.getUserInformation()).then(function() {
 							self.path = "home/navigation.template.html";
 							self.information = user.user_information;
 							if (user.user_information.gravatar) {
