@@ -2,57 +2,57 @@
 	<div class="form-group">
 		<label for="level-select">Select a level</label>
 		<select class="form-control" id="level-select" 
-			ng-options="item as item.level for item in $ctrl.levels track by item.level" 
-			ng-model="$ctrl.selected">
+			ng-options="item.level as item.level for item in $ctrl.levels track by item.level" 
+			ng-model="$ctrl.selectedLevel">
 		</select>
 	</div>
 	<div class="panel-group">
 		<div class="panel panel-default">
 	    	<div class="panel-heading">
 	    		<h4 class="panel-title">
-	        		Level {{$ctrl.selected.level}}
+	        		Level {{$ctrl.selectedLevel}}
 	      		</h4>
 	    	</div>
 	    	<div class="panel-body">
 	    		<div class="progress">
-					<div class="progress-bar progress-apprentice" style="width: {{($ctrl.selected.apprentice / $ctrl.selected.total) * 100}}%">
-				    	<span class="sr-only">{{($ctrl.selected.apprentice / $ctrl.selected.total) * 100}}</span>
+					<div class="progress-bar progress-apprentice" style="width: {{($ctrl.levels[$ctrl.selectedLevel]['apprenticeCount'] / $ctrl.levels[$ctrl.selectedLevel]['totalCount']) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.levels[$ctrl.selectedLevel]["apprenticeCount"] / $ctrl.levels[$ctrl.selectedLevel]["totalCount"]) * 100}}</span>
 				  	</div>
-				  	<div class="progress-bar progress-guru" style="width: {{($ctrl.selected.guru / $ctrl.selected.total) * 100}}%">
-				    	<span class="sr-only">{{($ctrl.selected.guru / $ctrl.selected.total) * 100}}</span>
+				  	<div class="progress-bar progress-guru" style="width: {{($ctrl.levels[$ctrl.selectedLevel]['guruCount'] / $ctrl.levels[$ctrl.selectedLevel]['totalCount']) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.levels[$ctrl.selctedLevel]["guruCount"] / $ctrl.levels[$ctrl.selectedLevel]["totalCount"]) * 100}}</span>
 				  	</div>
-				  	<div class="progress-bar progress-master" style="width: {{($ctrl.selected.master / $ctrl.selected.total) * 100}}%">
-				    	<span class="sr-only">{{($ctrl.selected.master / $ctrl.selected.total) * 100}}</span>
+				  	<div class="progress-bar progress-master" style="width: {{($ctrl.levels[$ctrl.selectedLevel]['masterCount'] / $ctrl.levels[$ctrl.selectedLevel]['totalCount']) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.levels[$ctrl.selectedLevel]["masterCount"] / $ctrl.levels[$ctrl.selectedLevel]["totalCount"]) * 100}}</span>
 				  	</div>
-				  	<div class="progress-bar progress-enlighten" style="width: {{($ctrl.selected.enlighten / $ctrl.selected.total) * 100}}%">
-				    	<span class="sr-only">{{($ctrl.selected.enlighten / $ctrl.selected.total) * 100}}</span>
+				  	<div class="progress-bar progress-enlighten" style="width: {{($ctrl.levels[$ctrl.selectedLevel]['enlightenCount'] / $ctrl.levels[$ctrl.selectedLevel]['totalCount']) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.levels[$ctrl.selectedLevel]["enlightenCount"] / $ctrl.levels[$ctrl.selectedLevel]["totalCount"]) * 100}}</span>
 				  	</div>
-				  	<div class="progress-bar progress-burned" style="width: {{($ctrl.selected.burned / $ctrl.selected.total) * 100}}%">
-				    	<span class="sr-only">{{($ctrl.selected.burned / $ctrl.selected.total) * 100}}</span>
+				  	<div class="progress-bar progress-burned" style="width: {{($ctrl.levels[$ctrl.selectedLevel]['burnedCount'] / $ctrl.levels[$ctrl.selectedLevel]['totalCount']) * 100}}%">
+				    	<span class="sr-only">{{($ctrl.levels[$ctrl.selectedLevel]["burnedCount"] / $ctrl.levels[$ctrl.selectedLevel]["totalCount"]) * 100}}</span>
 				  	</div>
 				</div>
 				<div class="btn-group btn-group-justified" role="group" aria-label="...">
 					<div class="btn-group" role="group">
 				    	<button type="button" class="btn btn-default btn-radicals" ng-click="$ctrl.showRadicals()">
 				    		<strong>Radicals</strong>
-				    		<span class="badge level-badge">{{$ctrl.selected.radicals}}</span>
+				    		<span class="badge level-badge">{{$ctrl.levels[$ctrl.selectedLevel]["radicalsCount"]}}</span>
 				    	</button>
 					</div>
 					<div class="btn-group" role="group">
 				    	<button type="button" class="btn btn-default btn-kanji" ng-click="$ctrl.showKanji()">
 				    		<strong>Kanji</strong>
-				    		<span class="badge level-badge">{{$ctrl.selected.kanji}}</span>
+				    		<span class="badge level-badge">{{$ctrl.levels[$ctrl.selectedLevel]["kanjiCount"]}}</span>
 				    	</button>
 					</div>
 					<div class="btn-group" role="group">
 				    	<button type="button" class="btn btn-default btn-vocabulary" ng-click="$ctrl.showVocab()">
 				    		<strong>Vocabulary</strong>
-				    		<span class="badge level-badge">{{$ctrl.selected.vocabulary}}</span>
+				    		<span class="badge level-badge">{{$ctrl.levels[$ctrl.selectedLevel]["vocabularyCount"]}}</span>
 				    	</button>
 					</div>
 				</div>
 				<div class="well">
-					<button type="button" class="btn btn-default btn-circle btn-size14 progress-{{item.user_specific.srs}}" ng-repeat="item in $ctrl.itemsToShow">
+					<button type="button" class="btn btn-default btn-circle btn-size14 progress-{{item.user_specific.srs}}" ng-repeat="item in $ctrl.levels[$ctrl.selectedLevel][$ctrl.selectedType]">
 						<div ng-switch on="{{item.hasCharacter}}">
 							<span ng-switch-when="true" class="radical-character">{{item.character}}</span>
 							<span ng-switch-when="false"><img ng-src="{{item.image}}" height="14" width="14" /></span>

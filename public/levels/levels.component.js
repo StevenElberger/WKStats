@@ -13,25 +13,24 @@ angular.
 				self.earliestRadicals = [];
 				// stores information about each level
 				self.levels = {};
-				// stores items on a level-by-level basis
-				self.items = {};
-				// which items are being shown
-				self.shown = "";
-				//
-				self.itemsToShow = [];
+				// which level is being shown
+				self.selectedLevel = "1";
+				// which type is being shown
+				self.selectedType = "radicalsItems";
 
 				self.showRadicals = function showRadicals() {
-					self.itemsToShow = self.items[self.selected.level]["radicals"];
+					self.selectedType = "radicalsItems";
 				};
 
 				self.showKanji = function showKanji() {
-					self.itemsToShow = self.items[self.selected.level]["kanji"];
+					self.selectedType = "kanjiItems";
 				};
 
 				self.showVocab = function showVocab() {
-					self.itemsToShow = self.items[self.selected.level]["vocabulary"];
+					self.selectedType = "vocabularyItems";
 				};
 
+				// gathers data from the API and prepares it for display
 				$q.when(user.getUserInformation()).then(function(error) {
 					level = user.user_information.level;
 				}).then(user.getRadicalsList()).then(function(error) {
@@ -42,15 +41,24 @@ angular.
 						radicals = user.radicals.getByLevel(i);
 						self.levels[i] = {
 							"level": i,
-							"apprentice": 0,
-							"guru": 0,
-							"master": 0,
-							"enlighten": 0,
-							"burned": 0,
-							"radicals": 0,
-							"kanji": 0,
-							"vocabulary": 0
+							"apprenticeCount": 0,
+							"apprenticeItems": [],
+							"guruCount": 0,
+							"guruItems": [],
+							"masterCount": 0,
+							"masterItems": [],
+							"enlightenCount": 0,
+							"enlightenItems": [],
+							"burnedCount": 0,
+							"burnedItems": [],
+							"radicalsCount": 0,
+							"radicalsItems": [],
+							"kanjiCount": 0,
+							"kanjiItems": [],
+							"vocabularyCount": 0,
+							"vocabularyItems": []
 						};
+						// adds necessary property for presenting characters correctly
 						for (j = 0; j < radicals.length; j += 1) {
 							if (Object.keys(radicals[j].character).length === 0 
 								&& radicals[j].character.constructor === Object) {
@@ -59,11 +67,7 @@ angular.
 								radicals[j].hasCharacter = true;
 							}
 						}
-						self.items[i] = {
-							"radicals": radicals,
-							"kanji": [],
-							"vocabulary": []
-						};
+						self.levels[i]["radicalsItems"] = radicals;
 						earliest = Infinity;
 						// identify earliest radical at that level
 						for (j = 0; j < radicals.length; j += 1) {
@@ -74,24 +78,24 @@ angular.
 							}
 							switch(radicals[j].user_specific.srs) {
 							case "apprentice":
-								self.levels[i]["apprentice"] += 1;
+								self.levels[i]["apprenticeCount"] += 1;
 								break;
 							case "guru":
-								self.levels[i]["guru"] += 1;
+								self.levels[i]["guruCount"] += 1;
 								break;
 							case "master":
-								self.levels[i]["master"] += 1;
+								self.levels[i]["masterCount"] += 1;
 								break;
 							case "enlighten":
-								self.levels[i]["enlighten"] += 1;
+								self.levels[i]["enlightenCount"] += 1;
 								break;
 							case "burned":
-								self.levels[i]["burned"] += 1;
+								self.levels[i]["burnedCount"] += 1;
 								break;
 							default:
 								break;
 							}
-							self.levels[i]["radicals"] += 1;
+							self.levels[i]["radicalsCount"] += 1;
 						}
 						self.earliestRadicals.push(earliest);
 					}
@@ -100,29 +104,29 @@ angular.
 					var i, j, kanji;
 					for (i = 1; i <= level; i += 1) {
 						kanji = user.kanji.getByLevel(i);
-						self.items[i]["kanji"] = kanji;
+						self.levels[i]["kanjiItems"] = kanji;
 						for (j = 0; j < kanji.length; j += 1) {
 							kanji[j].hasCharacter = true;
 							switch(kanji[j].user_specific.srs) {
 							case "apprentice":
-								self.levels[i]["apprentice"] += 1;
+								self.levels[i]["apprenticeCount"] += 1;
 								break;
 							case "guru":
-								self.levels[i]["guru"] += 1;
+								self.levels[i]["guruCount"] += 1;
 								break;
 							case "master":
-								self.levels[i]["master"] += 1;
+								self.levels[i]["masterCount"] += 1;
 								break;
 							case "enlighten":
-								self.levels[i]["enlighten"] += 1;
+								self.levels[i]["enlightenCount"] += 1;
 								break;
 							case "burned":
-								self.levels[i]["burned"] += 1;
+								self.levels[i]["burnedCount"] += 1;
 								break;
 							default:
 								break;
 							}
-							self.levels[i]["kanji"] += 1;
+							self.levels[i]["kanjiCount"] += 1;
 						}
 					}
 				}).then(user.getVocabularyList()).then(function(error) {
@@ -130,42 +134,41 @@ angular.
 					var i, j, vocab;
 					for (i = 1; i <= level; i += 1) {
 						vocab = user.vocabulary.getByLevel(i);
-						self.items[i]["vocabulary"] = vocab;
+						self.levels[i]["vocabularyItems"] = vocab;
 						for (j = 0; j < vocab.length; j += 1) {
 							vocab[j].hasCharacter = true;
 							switch(vocab[j].user_specific.srs) {
 							case "apprentice":
-								self.levels[i]["apprentice"] += 1;
+								self.levels[i]["apprenticeCount"] += 1;
 								break;
 							case "guru":
-								self.levels[i]["guru"] += 1;
+								self.levels[i]["guruCount"] += 1;
 								break;
 							case "master":
-								self.levels[i]["master"] += 1;
+								self.levels[i]["masterCount"] += 1;
 								break;
 							case "enlighten":
-								self.levels[i]["enlighten"] += 1;
+								self.levels[i]["enlightenCount"] += 1;
 								break;
 							case "burned":
-								self.levels[i]["burned"] += 1;
+								self.levels[i]["burnedCount"] += 1;
 								break;
 							default:
 								break;
 							}
-							self.levels[i]["vocabulary"] += 1;
+							self.levels[i]["vocabularyCount"] += 1;
 						}
 					}
 				}).then(function() {
 					// tally totals and select default level
 					var i;
 					for (i = 1; i <= level; i += 1) {
-						self.levels[i]["total"] = self.levels[i]["apprentice"] +
-													self.levels[i]["guru"] +
-													self.levels[i]["master"] +
-													self.levels[i]["enlighten"] +
-													self.levels[i]["burned"];
+						self.levels[i]["totalCount"] = self.levels[i]["apprenticeCount"] +
+													self.levels[i]["guruCount"] +
+													self.levels[i]["masterCount"] +
+													self.levels[i]["enlightenCount"] +
+													self.levels[i]["burnedCount"];
 					}
-					self.selected = self.levels["1"];
 				});
 			}
 		]

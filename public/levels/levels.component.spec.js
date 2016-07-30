@@ -252,35 +252,28 @@ describe('levels', function() {
         it("should load user information from the API automatically", function() {
             expect(ctrl.earliestRadicals).toEqual([]);
             expect(ctrl.levels).toEqual({});
-            expect(ctrl.items).toEqual({});
-            expect(ctrl.shown).toEqual("");
-            expect(ctrl.itemsToShow).toEqual([]);
-            setTimeout(() => {
-                expect(ctrl.selected.level).toBe(1);
-            });
+            expect(ctrl.selectedLevel).toEqual("1");
+            expect(ctrl.selectedType).toEqual("radicalsItems");
         });
 
         it("should load radicals when the radical button is clicked", function() {
             setTimeout(() => {
-                ctrl.showRadicals();
-                expect(ctrl.itemsToShow.length).toBe(3);
-                expect(ctrl.itemsToShow[0].type).toBe("radical");
+                ctrl.showKanji();
+                expect(ctrl.selectedType).toBe("kanjiItems");
             });
         });
 
         it("should load kanji when the kanji button is clicked", function() {
             setTimeout(() => {
-                ctrl.showKanji();
-                expect(ctrl.itemsToShow.length).toBe(3);
-                expect(ctrl.itemsToShow[0].type).toBe("kanji");
+                ctrl.showRadicals();
+                expect(ctrl.selectedType).toBe("radicalsItems");
             });
         });
 
         it("should load vocabulary when the vocabulary button is clicked", function() {
             setTimeout(() => {
-                ctrl.showKanji();
-                expect(ctrl.itemsToShow.length).toBe(3);
-                expect(ctrl.itemsToShow[0].type).toBe("vocabulary");
+                ctrl.showVocabulary();
+                expect(ctrl.selectedType).toBe("vocabularyItems");
             });
         });
     });
