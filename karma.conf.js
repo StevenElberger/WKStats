@@ -16,7 +16,8 @@ module.exports = function(config) {
       'home/home.component.js',
       'levels/levels.module.js',
       'levels/levels.component.js',
-      'home/home.component.spec.js'
+      'home/home.component.spec.js',
+      'levels/levels.component.spec.js'
     ],
 
     autoWatch: true,

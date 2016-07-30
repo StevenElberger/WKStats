@@ -3,18 +3,16 @@ describe('home', function() {
     // Load the module that contains the `home` component before each test
     beforeEach(function() {
         module('home');
-        
     });
 
     // Test the controller
     describe('HomeController', function() {
-        var scope, ctrl;
+        var ctrl;
 
         // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
         // This allows us to inject a service and assign it to a variable with the same name
         // as the service while avoiding a name conflict.
-        beforeEach(inject(function($rootScope, $componentController) {
-            scope = $rootScope.$new();
+        beforeEach(inject(function($componentController) {
             ctrl = $componentController("home");
         }));
 
