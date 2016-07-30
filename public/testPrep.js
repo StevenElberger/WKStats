@@ -1,3 +1,3 @@
 (function() {
-	wkw_debug = true;
+    wkw_debug = true;
 }());
