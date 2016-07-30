@@ -51,6 +51,14 @@ angular.
 							"kanji": 0,
 							"vocabulary": 0
 						};
+						for (j = 0; j < radicals.length; j += 1) {
+							if (Object.keys(radicals[j].character).length === 0 
+								&& radicals[j].character.constructor === Object) {
+								radicals[j].hasCharacter = false;
+							} else {
+								radicals[j].hasCharacter = true;
+							}
+						}
 						self.items[i] = {
 							"radicals": radicals,
 							"kanji": [],
@@ -94,6 +102,7 @@ angular.
 						kanji = user.kanji.getByLevel(i);
 						self.items[i]["kanji"] = kanji;
 						for (j = 0; j < kanji.length; j += 1) {
+							kanji[j].hasCharacter = true;
 							switch(kanji[j].user_specific.srs) {
 							case "apprentice":
 								self.levels[i]["apprentice"] += 1;
@@ -123,6 +132,7 @@ angular.
 						vocab = user.vocabulary.getByLevel(i);
 						self.items[i]["vocabulary"] = vocab;
 						for (j = 0; j < vocab.length; j += 1) {
+							vocab[j].hasCharacter = true;
 							switch(vocab[j].user_specific.srs) {
 							case "apprentice":
 								self.levels[i]["apprentice"] += 1;

@@ -16,6 +16,11 @@ input[type="text"] {
 	color: #fff;
 }
 
+.radical-character {
+	font-weight: bold;
+	color: #fff;
+}
+
 .btn-radicals:hover, .btn-radicals:active, .btn-radicals:focus {
 	background-color: #0088cc;
 	color: #fff;
