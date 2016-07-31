@@ -9,7 +9,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'testPrep.js',
-      'WKW.js',
+      'wkw.js',
       'app.js',
       'app.config.js',
       'home/home.module.js',
