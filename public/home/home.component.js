@@ -4,10 +4,12 @@ angular.
     module('home').
     component('home', {
         templateUrl: 'home/home.template.html',
-        controller: ['$q', '$rootScope', '$location',
-            function HomeController($q, $rootScope, $location) {
+        controller: ['$q', '$scope', '$route', '$location',
+            function HomeController($q, $scope, $route, $location) {
                 var self = this;
 
+                // keep track of route for active tabs
+                $scope.$route = $route;
                 // defaults
                 self.path = "/home/api-key.template.html";
                 self.userKey = "";

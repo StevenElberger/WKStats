@@ -8,11 +8,16 @@ angular.
 
             $routeProvider.
                 when('/:userKey/navigation', {
-                    template: '<div class="alert alert-info">Site under development! Pick something up top...</div>'
+                    template: '<div class="alert alert-info">Site under development! Pick something up top...</div>',
+                    activeTab: 'home'
                 }).
                 when('/:userKey/levels', {
-                    template: '<levels></levels>'
+                    template: '<levels></levels>',
+                    activeTab:  'levels'
                 }).
-                otherwise('/');
+                otherwise({
+                    routeTo: '/',
+                    activeTab: 'home'
+                });
         }
     ]);

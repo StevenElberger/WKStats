@@ -8,10 +8,10 @@
     </div>
 </div>
 <ul class="nav nav-tabs">
-    <li class="active">
+    <li ng-class="{active: $route.current.activeTab === 'home'}">
         <a href="#!/{{$ctrl.userKey}}/navigation">Home</a>
     </li>
-    <li>
+    <li ng-class="{active: $route.current.activeTab === 'levels'}">
         <a href="#!/{{$ctrl.userKey}}/levels">Levels</a>
     </li>
 </ul>
