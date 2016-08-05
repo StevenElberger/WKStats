@@ -1,5 +1,4 @@
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -8,7 +7,42 @@ input[type="text"] {
 }
 
 .content {
-    margin-top: 5%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 5% auto;
+    max-width: 1000px;
+    min-width: 600px;
+}
+
+.vertical {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.key-container {
+    max-width: 700px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.header-container {
+    padding: 0px;
+    width: 100%;
+}
+
+.page-header {
+    border: none;
+}
+
+.header {
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+h2.username {
+    display: inline;
 }
 
 .btn-radicals {
