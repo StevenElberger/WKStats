@@ -21,7 +21,7 @@ angular.
                 }).
                 otherwise({
                     routeTo: '/',
-                    activeTab: 'home'
+                    activeTab: 'key'
                 });
         }
     ]);

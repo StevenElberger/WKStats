@@ -17,7 +17,7 @@ describe('home', function() {
         }));
 
         it("should redirect and add key properties to the controller", function() {
-            expect(ctrl.path).toBe("/home/api-key.template.html");
+            expect(ctrl.path).toBe("home/api-key.template.html");
             ctrl.userKey = "bbf426d6937cbb77d9f908c08d90c3ce"; // simulate entering text
             spyOn($, 'getJSON').and.callFake(function (url, success) {
                 success({
@@ -38,7 +38,7 @@ describe('home', function() {
             });
             ctrl.getData();
             setTimeout(() => {
-                expect(ctrl.path).toBe("/home/navigation.template.html");
+                expect(ctrl.path).toBe("home/navigation.template.html");
                 expect(ctrl.userKey).toBe("bbf426d6937cbb77d9f908c08d90c3ce");
                 expect(ctrl.gravatar).toBe("https://www.gravatar.com/avatar/bbf426d6937cbb77d9f908c08d90c3ce");
             });
