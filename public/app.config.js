@@ -15,6 +15,10 @@ angular.
                     template: '<levels></levels>',
                     activeTab:  'levels'
                 }).
+                when('/:userKey/about', {
+                    template: '<p>Coming soon!</p>',
+                    activeTab: 'about'
+                }).
                 otherwise({
                     routeTo: '/',
                     activeTab: 'home'

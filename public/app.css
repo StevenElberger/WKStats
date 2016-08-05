@@ -1,3 +1,5 @@
+/* Main page rules */
+
 body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -14,6 +16,14 @@ input[type="text"] {
     min-width: 600px;
 }
 
+.header-container {
+    padding: 0px;
+    width: 100%;
+}
+
+/* Home Module rules */
+
+/* Api-key template rules */
 .vertical {
     position: absolute;
     top: 40%;
@@ -27,31 +37,24 @@ input[type="text"] {
     height: 100%;
 }
 
-.header-container {
-    padding: 0px;
+/* Navigation template rules */
+.header {
     width: 100%;
+    background-color: #f2f2f2;
 }
 
 .page-header {
     border: none;
 }
 
-.header {
-    width: 100%;
-    background-color: #f2f2f2;
-}
-
-h2.username {
-    display: inline;
+/* Levels Module Rules */
+.radical-character {
+    font-weight: bold;
+    color: #fff;
 }
 
 .btn-radicals {
     background-color: #0093dd;
-    color: #fff;
-}
-
-.radical-character {
-    font-weight: bold;
     color: #fff;
 }
 
@@ -85,68 +88,32 @@ h2.username {
     color: #666666;
 }
 
-.well .circlebuttons {
-    /* general formatting */
-    text-align: right;
-    margin-top: -4rem;
-    margin-bottom: 1rem;
-}
-
-.well .circlebutton-label {
-    display: inline-block;
-    margin-right: 1rem;
-    text-align: left;
-    line-height: 1em;
-}
-
-.well .circlebutton-label2 {
-    font-size: 0.8em;
-}
-
-.well .btn-circle {
-    vertical-align: text-bottom;
-    padding: 0;
-}
-
-.well .btn-circle.btn-size14 {
-    width: 2.8em;
-    height: 2.8em;
-    border-radius: 1.4em;
-}
-
-.well .btn-circle.btn-size16 {
-    width: 3.2em;
-    height: 3.2em;
-    border-radius: 1.6em;
-}
-
-
-.btn .btn-default .btn-circle .btn-size14 .progress-apprentice,
-.well .btn-circle .progress-apprentice,
-.progress-apprentice {
+.progress-bar.progress-apprentice,
+.well > button.progress-apprentice {
     background-color: #f0a;
 }
 
-.btn .btn-default .btn-circle .btn-size14 .progress-guru,
-.well .btn-circle .progress-guru,
-.progress-guru {
+.progress-bar.progress-guru,
+.well > button.progress-guru {
     background-color: #aa38c6;
 }
 
-.btn .btn-default .btn-circle .btn-size14 .progress-master,
-.well .btn-circle .progress-master,
-.progress-master {
+.progress-bar.progress-master,
+.well > button.progress-master {
     background-color: #5571e2;
 }
 
-.btn .btn-default .btn-circle .btn-size14 .progress-enlighten,
-.well .btn-circle .progress-enlighten,
-.progress-enlighten {
+.progress-bar.progress-enlighten,
+.well > button.progress-enlighten {
     background-color: #0af;
 }
 
-.btn .btn-default .btn-circle .btn-size14 .progress-burned,
-.well .btn-circle .progress-burned,
-.progress-burned {
+.progress-bar.progress-burned,
+.well > button.progress-burned {
     background-color: #555;
+}
+
+/* greyed out for items that are not unlocked */
+.well > button.progress- {
+    background-color: #d9d9d9;
 }

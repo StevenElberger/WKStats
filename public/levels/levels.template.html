@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="well">
-                    <button type="button" class="btn btn-default btn-circle btn-size14 progress-{{item.user_specific.srs}}" ng-repeat="item in $ctrl.levels[$ctrl.selectedLevel][$ctrl.selectedType]">
+                    <button type="button" class="btn btn-default progress-{{item.user_specific.srs}}" ng-repeat="item in $ctrl.levels[$ctrl.selectedLevel][$ctrl.selectedType]">
                         <div ng-switch on="{{item.hasCharacter}}">
                             <span ng-switch-when="true" class="radical-character">{{item.character}}</span>
                             <span ng-switch-when="false"><img ng-src="{{item.image}}" height="14" width="14" /></span>
