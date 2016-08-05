@@ -10,19 +10,10 @@ angular.
 
                 // keep track of route for active tabs
                 $scope.$route = $route;
+
                 // defaults
-                self.path = "";
+                self.path = "home/api-key.template.html";
                 self.userKey = "";
-                if ($route.current && 
-                    $route.current.activeTab && 
-                    $route.current.activeTab !== "key") {
-                    self.path = "home/navigation.template.html";
-                } else {
-                    self.path = "home/api-key.template.html";
-                }
-                if ($routeParams.userKey) {
-                    self.userKey = $routeParams.userKey;
-                }
 
                 self.getData = function getData() {
                     if (self.userKey) {
@@ -41,6 +32,12 @@ angular.
                         });
                     }
                 };
+
+                // check if this is a page refresh
+                if ($routeParams.userKey) {
+                    self.userKey = $routeParams.userKey;
+                    self.getData(); // 
+                }
             }
         ]
     });
