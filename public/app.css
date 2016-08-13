@@ -88,32 +88,48 @@ input[type="text"] {
     color: #666666;
 }
 
+.panel-body > span.progress-apprentice,
+.panel-body > span.progress-guru,
+.panel-body > span.progress-master,
+.panel-body > span.progress-enlighten,
+.panel-body > span.progress-burned,
+.panel-body > span.progress- {
+    font-weight: bold;
+    color: #fff;
+}
+
 .progress-bar.progress-apprentice,
-.well > button.progress-apprentice {
+.well > button.progress-apprentice,
+.panel-body > span.progress-apprentice {
     background-color: #f0a;
 }
 
 .progress-bar.progress-guru,
-.well > button.progress-guru {
+.well > button.progress-guru,
+.panel-body > span.progress-guru {
     background-color: #aa38c6;
 }
 
 .progress-bar.progress-master,
-.well > button.progress-master {
+.well > button.progress-master,
+.panel-body > span.progress-master {
     background-color: #5571e2;
 }
 
 .progress-bar.progress-enlighten,
-.well > button.progress-enlighten {
+.well > button.progress-enlighten,
+.panel-body > span.progress-enlighten {
     background-color: #0af;
 }
 
 .progress-bar.progress-burned,
-.well > button.progress-burned {
+.well > button.progress-burned,
+.panel-body > span.progress-burned {
     background-color: #555;
 }
 
 /* greyed out for items that are not unlocked */
-.well > button.progress- {
-    background-color: #d9d9d9;
+.well > button.progress-,
+.panel-body > span.progress- {
+    background-color: #bfbfbf;
 }
