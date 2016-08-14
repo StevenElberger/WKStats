@@ -9,6 +9,9 @@ angular.
                 var self = this,
                     user = WKW.getUser($routeParams.userKey),
                     level;
+                // hide view when fetching/crunching data
+                self.loading = true;
+                self.loadingProgress = 0;
                 // stores earliest unlocked dates for each level
                 self.earliestRadicals = [];
                 // stores information about each level
@@ -33,7 +36,9 @@ angular.
                 // gathers data from the API and prepares it for display
                 $q.when(user.getUserInformation()).then(function(error) {
                     level = user.user_information.level;
-                }).then(user.getRadicalsList()).then(function(error) {
+                    self.loadingProgress = 20;
+                    return $q.when(user.getRadicalsList());
+                }).then(function() {
                     var i, j, radicals, earliest, currentDate;
                     
                     // tally radicals per level
@@ -99,7 +104,9 @@ angular.
                         }
                         self.earliestRadicals.push(earliest);
                     }
-                }).then(user.getKanjiList()).then(function(error) {
+                    self.loadingProgress = 40;
+                    return $q.when(user.getKanjiList());
+                }).then(function() {
                     // tally kanji per level
                     var i, j, kanji;
                     for (i = 1; i <= level; i += 1) {
@@ -129,7 +136,13 @@ angular.
                             self.levels[i]["kanjiCount"] += 1;
                         }
                     }
-                }).then(user.getVocabularyList()).then(function(error) {
+                    // This call takes the longest to respond
+                    // and the data crunching is almost instant.
+                    // Progress to 80 won't be seen after this returns
+                    // so update it here first.
+                    self.loadingProgress = 70;
+                    return $q.when(user.getVocabularyList());
+                }).then(function() {
                     // tally vocab per level
                     var i, j, vocab;
                     for (i = 1; i <= level; i += 1) {
@@ -169,6 +182,8 @@ angular.
                                                     self.levels[i]["enlightenCount"] +
                                                     self.levels[i]["burnedCount"];
                     }
+                    self.loadingProgress = 100;
+                    self.loading = false;
                 });
             }
         ]
