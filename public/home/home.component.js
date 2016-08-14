@@ -24,11 +24,8 @@ angular.
                         $q.when(user.getUserInformation()).then(function() {
                             self.path = "home/navigation.template.html";
                             self.information = user.user_information;
-                            if (user.user_information.gravatar) {
-                                self.gravatar = user.user_information.getAvatar();
-                            }
                             // redirect
-                            $location.path('/' + self.userKey + '/navigation');
+                            $location.path('/' + self.userKey + '/home');
                         });
                     }
                 };

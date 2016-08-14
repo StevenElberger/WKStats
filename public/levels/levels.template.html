@@ -17,7 +17,8 @@
     <div class="form-group">
         <label for="level-select">Select a level</label>
         <select class="form-control" id="level-select" 
-            ng-options="item.level as item.level for item in $ctrl.levels track by item.level" 
+            ng-options="item.level as item.level for item in $ctrl.levels"
+            ng-init="$ctrl.selectedLevel = 1"
             ng-model="$ctrl.selectedLevel">
         </select>
     </div>

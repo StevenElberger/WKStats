@@ -7,7 +7,7 @@ angular.
             $locationProvider.hashPrefix('!');
 
             $routeProvider.
-                when('/:userKey/navigation', {
+                when('/:userKey/home', {
                     template: '<div class="alert alert-info">Site under development! Pick something up top...</div>',
                     activeTab: 'home'
                 }).
