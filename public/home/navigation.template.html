@@ -1,22 +1,21 @@
-<div class="container header">
-    <div class="page-header">
-        <h1>
-            WaniKani Stats
-            <small class="username">
-                {{$ctrl.information.username}}
+<div class="container">
+    <div class="navbar navbar-fixed-top navbar-default">
+        <div class="navbar-inner">
+            <a class="navbar-brand" href="">
+                WaniKani Stats - {{$ctrl.information.username}}
                 <span class="label label-primary">{{$ctrl.information.level}}</span>
-            </small>
-        </h1>
+            </a>
+            <ul class="nav navbar-nav">                
+                <li ng-class="{active: $route.current.activeTab === 'home'}">
+                    <a href="#!/{{$ctrl.userKey}}/navigation">Home</a>
+                </li>
+                <li ng-class="{active: $route.current.activeTab === 'levels'}">
+                    <a href="#!/{{$ctrl.userKey}}/levels">Levels</a>
+                </li>
+                <li ng-class="{active: $route.current.activeTab === 'about'}">
+                    <a href="#!/{{$ctrl.userKey}}/about">About</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <ul class="nav nav-tabs">
-        <li ng-class="{active: $route.current.activeTab === 'home'}">
-            <a href="#!/{{$ctrl.userKey}}/navigation">Home</a>
-        </li>
-        <li ng-class="{active: $route.current.activeTab === 'levels'}">
-            <a href="#!/{{$ctrl.userKey}}/levels">Levels</a>
-        </li>
-        <li ng-class="{active: $route.current.activeTab === 'about'}">
-            <a href="#!/{{$ctrl.userKey}}/about">About</a>
-        </li>
-    </ul>
 </div>

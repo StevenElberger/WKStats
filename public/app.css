@@ -8,6 +8,9 @@ input[type="text"] {
     color: #d14;
 }
 
+/* UI Bootstrap Requisite */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 .content {
     padding-left: 50px;
     padding-right: 50px;
@@ -38,14 +41,6 @@ input[type="text"] {
 }
 
 /* Navigation template rules */
-.header {
-    width: 100%;
-    background-color: #f2f2f2;
-}
-
-.page-header {
-    border: none;
-}
 
 /* Levels Module Rules */
 .radical-character {

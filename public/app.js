@@ -3,5 +3,6 @@
 angular.module('wkStats', [
     'home',
     'levels',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
 ]);
