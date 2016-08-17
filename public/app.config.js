@@ -15,6 +15,10 @@ angular.
                     template: '<levels></levels>',
                     activeTab:  'levels'
                 }).
+                when('/:userKey/levelStats', {
+                    template: '<level-stats></level-stats>',
+                    activeTab: 'levelStats'
+                }).
                 when('/:userKey/about', {
                     template: '<p>Coming soon!</p>',
                     activeTab: 'about'
