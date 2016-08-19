@@ -40,10 +40,46 @@ angular
                     // have all of the dates, now compute time
                     for (i = 0; i < self.timestamps.length; i += 1) {
                         if ((i + 1) === self.timestamps.length) { break; }
-                        self.dates.push(self.timestamps[i+1] - self.timestamps[i]);
+                        self.dates.push(daysFilter(self.timestamps[i+1] - self.timestamps[i]));
                     }
-                    self.dates.push(self.timestamps[self.timestamps.length] - new Date());
-                });
+                    self.dates.push(daysFilter(Math.floor(new Date() / 1000) - self.timestamps[self.timestamps.length-1]));
+                }).then(function() {
+                    var i, values = [];
+                    for (i = 0; i < self.dates.length; i += 1) {
+                        values.push({ "label": i+1 , "value": self.dates[i][0] });
+                    }
+                    self.data = [{
+                        key: "Level Time",
+                        values: values
+                    }];
+                    self.options = {
+                        chart: {
+                            type: 'discreteBarChart',
+                            height: 450,
+                            margin : {
+                                top: 20,
+                                right: 20,
+                                bottom: 60,
+                                left: 55
+                            },
+                            x: function(d) { return d.label; },
+                            y: function(d) { return d.value; },
+                            showValues: true,
+                            valueFormat: function(d) {
+                                return d3.format('')(d);
+                            },
+                            transitionDuration: 500,
+                            xAxis: {
+                                axisLabel: 'Levels'
+                            },
+                            yAxis: {
+                                axisLabel: 'Days',
+                                axisLabelDistance: 30
+                            }
+                        }
+                    };
+                    self.loading = false;
+                });;
             }
         ]
     });

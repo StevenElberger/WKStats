@@ -1,5 +1,6 @@
 "use strict";
 
 var levelStats = angular.module('levelStats', [
-    'filters'
+    'filters',
+    'nvd3'
 ]);

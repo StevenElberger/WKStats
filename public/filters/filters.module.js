@@ -16,7 +16,7 @@ filters.filter('days', function() {
             hours = input % 24;
             input = Math.floor(input / 24);
             days = input;
-            result = days + " Days, " + minutes + " minutes";
+            result = [days, days + " Days, " + minutes + " minutes"];
         }
         return result;
     };
