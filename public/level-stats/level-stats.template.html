@@ -1,7 +1,5 @@
 <progress-bar loading="loading" loading-progress="{{$ctrl.loadingProgress}}"></progress-bar>
 
-<!-- <ul ng-repeat="date in $ctrl.dates track by $index">
-    <li>{{date | days}}</li>
-</ul> -->
-
-<nvd3 ng-show="{{$ctrl.loading}}" options="$ctrl.options" data="$ctrl.data"></nvd3>
+<div id="graph-container">
+    <nvd3 ng-show="{{$ctrl.loading}}" options="$ctrl.options" data="$ctrl.data"></nvd3>
+</div>

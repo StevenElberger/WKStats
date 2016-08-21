@@ -44,10 +44,12 @@ angular
                     }
                     self.dates.push(daysFilter(Math.floor(new Date() / 1000) - self.timestamps[self.timestamps.length-1]));
                 }).then(function() {
-                    var i, values = [];
+                    var i, average, sum = 0, values = [];
                     for (i = 0; i < self.dates.length; i += 1) {
                         values.push({ "label": i+1 , "value": self.dates[i][0] });
+                        sum += self.dates[i][0];
                     }
+                    average = Math.floor(sum / self.dates.length);
                     self.data = [{
                         key: "Level Time",
                         values: values
@@ -75,6 +77,15 @@ angular
                             yAxis: {
                                 axisLabel: 'Days',
                                 axisLabelDistance: 30
+                            },
+                            color: function (d, i) {
+                                if (d.value > average) { return "#cc00cc"; }
+                                return "#ff80ff";
+                            },
+                            bars: {
+                                dispatch: {
+                                    tooltipShow: function(e) { console.log(e); }
+                                }
                             }
                         }
                     };
